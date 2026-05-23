@@ -1,1 +1,8 @@
 project_id = "rgdmzbxzzwdcesvesdqd"
+
+[auth]
+site_url = "https://medfamily.shreybuilds.com"
+additional_redirect_urls = [
+  "https://medfamily.shreybuilds.com/*",
+  "http://localhost:5173/*"
+]

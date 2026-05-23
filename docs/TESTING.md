@@ -29,5 +29,5 @@ npm run test
 ## Known Test Gaps
 
 - No Playwright E2E suite is committed yet.
-- Supabase migrations were not executed against a MedFamily remote project in this pass.
+- Supabase production migrations were executed against MedFamily project `rgdmzbxzzwdcesvesdqd` in `ap-south-1`.
 - Browser notification behavior should be checked manually because permission prompts differ by browser.

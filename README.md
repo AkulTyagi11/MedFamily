@@ -49,10 +49,11 @@ Production migrations live in `supabase/migrations`:
 2. `0002_rls_and_storage_policies.sql`
 3. `0003_functions_and_triggers.sql`
 4. `0004_seed_demo_data.sql`
+5. `0006_harden_helper_search_paths.sql`
 
 `0005_optional_demo_mode.sql` is local-demo-only. It intentionally relaxes RLS and uses database-backed demo passwords, so do not apply it to production or shared staging.
 
-Only the `Portfolio` Supabase project was visible through MCP during this pass, so no MedFamily migration was applied remotely.
+The linked Supabase project is `MedFamily` (`rgdmzbxzzwdcesvesdqd`) in `ShreyTriesToCode's Org`, region `ap-south-1`.
 
 ## Vercel Deployment
 

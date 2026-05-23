@@ -36,7 +36,7 @@ MedFamily summaries, alerts, vitals displays, and emergency exports are informat
 
 ## Remaining Operational Work
 
-- Confirm SQL migrations against a real MedFamily Supabase project before production.
+- Production migrations are applied to Supabase project `rgdmzbxzzwdcesvesdqd`; rerun advisors after future schema changes.
 - Configure Supabase email templates and confirmation policy.
 - Decide whether doctor/hospital/chemist roles require admin approval outside self-service onboarding.
 - Add monitoring for auth, storage, and database policy errors after launch.

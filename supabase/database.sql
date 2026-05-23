@@ -6,12 +6,13 @@
 --   2. supabase/migrations/0002_rls_and_storage_policies.sql
 --   3. supabase/migrations/0003_functions_and_triggers.sql
 --   4. supabase/migrations/0004_seed_demo_data.sql
+--   5. supabase/migrations/0006_harden_helper_search_paths.sql
 --
 -- Local/demo-only add-on:
---   5. supabase/migrations/0005_optional_demo_mode.sql
+--   6. supabase/migrations/0005_optional_demo_mode.sql
 --
 -- Notes:
--- - Keep production deployments on 0001-0004 unless you explicitly want the
+-- - Keep production deployments on 0001-0004 and 0006 unless you explicitly want the
 --   insecure DB-backed demo auth mode.
 -- - 0005 deliberately relaxes production protections for isolated demo use.
 -- - Medical storage buckets remain private in every migration path.

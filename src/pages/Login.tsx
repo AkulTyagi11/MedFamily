@@ -306,17 +306,11 @@ export default function Login() {
   };
 
   return (
-    <div
-      className="relative min-h-[100dvh] overflow-hidden px-4 py-6 sm:px-6 sm:py-8 lg:px-8"
-      style={{
-        background:
-          'radial-gradient(circle at top left, color-mix(in srgb, var(--color-primary-300) 24%, transparent), transparent 34%), radial-gradient(circle at bottom right, color-mix(in srgb, var(--color-secondary-300) 20%, transparent), transparent 28%), linear-gradient(180deg, var(--color-background) 0%, var(--color-background-strong) 100%)',
-      }}
-    >
-      <div className="mx-auto grid min-h-[calc(100dvh-3rem)] max-w-6xl gap-5 lg:grid-cols-[1.04fr_0.96fr] lg:items-center">
+    <div className="relative min-h-[100dvh] overflow-hidden bg-background px-4 py-5 sm:px-6 sm:py-8 lg:px-8">
+      <div className="mx-auto grid min-h-[calc(100dvh-3rem)] max-w-6xl gap-5 lg:grid-cols-[1fr_0.92fr] lg:items-center">
         <section className="space-y-4">
           {!isSupabaseConfigured ? (
-            <div className="panel rounded-[28px] border-danger-200 bg-danger-50/80 p-4 text-sm text-danger-700">
+            <div className="panel rounded-2xl border-danger-200 bg-danger-50/80 p-4 text-sm text-danger-700">
               <p className="font-semibold">Frontend loaded. Supabase is not connected yet.</p>
               <p className="mt-1">
                 {supabaseConfigError} The login and signup screens stay visible so the project does not open as a blank page.
@@ -324,8 +318,7 @@ export default function Login() {
             </div>
           ) : null}
 
-          <div className="hero-gradient panel relative overflow-hidden rounded-[34px] p-5 sm:p-6 lg:p-7">
-            <div className="absolute inset-y-0 right-0 hidden w-48 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.28),transparent_70%)] lg:block" />
+          <div className="panel relative overflow-hidden rounded-3xl p-5 sm:p-6 lg:p-7">
             <div className="relative space-y-5">
               <div className="theme-chip-strong inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-semibold">
                 <HeartPulse className="h-4 w-4" />
@@ -341,8 +334,8 @@ export default function Login() {
 
               <div className="grid gap-3 sm:grid-cols-3">
                 {CARE_HIGHLIGHTS.map(({ title, description, icon: Icon }) => (
-                  <div key={title} className="theme-chip-strong min-h-[124px] rounded-[24px] p-4">
-                    <div className="theme-icon-badge flex h-11 w-11 items-center justify-center rounded-[18px]">
+                  <div key={title} className="theme-surface-soft min-h-[124px] rounded-2xl p-4">
+                    <div className="theme-icon-badge flex h-10 w-10 items-center justify-center rounded-2xl">
                       <Icon className="h-5 w-5" />
                     </div>
                     <p className="mt-4 text-sm font-semibold text-text-primary">{title}</p>
@@ -354,7 +347,7 @@ export default function Login() {
           </div>
 
           <div className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
-            <Card eyebrow="Seeded preview" title="Demo accounts by role" className="rounded-[30px]">
+            <Card eyebrow="Seeded preview" title="Demo accounts by role" className="rounded-3xl">
               <div className="space-y-3">
                 <p className="text-sm text-text-secondary">
                   Prefill a role-specific account to review the dashboard, access model, and care workflows without changing auth logic.
@@ -367,7 +360,7 @@ export default function Login() {
                       <button
                         key={account.label}
                         type="button"
-                        className="theme-surface-soft rounded-[22px] p-3 text-left transition hover:border-primary-300 hover:bg-[var(--surface-accent)] focus-visible:outline-none focus-visible:ring-soft"
+                        className="theme-surface-soft rounded-2xl p-3 text-left transition hover:border-primary-300 hover:bg-[var(--surface-accent)] focus-visible:outline-none focus-visible:ring-soft"
                         onClick={() => handleUseDemoAccount(account)}
                       >
                         <div className="flex items-start justify-between gap-3">
@@ -375,7 +368,7 @@ export default function Login() {
                             <p className="text-sm font-semibold text-text-primary">{account.label}</p>
                             <p className="text-xs text-text-secondary">{account.summary}</p>
                           </div>
-                          <div className="theme-icon-badge flex h-9 w-9 items-center justify-center rounded-[16px]">
+                          <div className="theme-icon-badge flex h-9 w-9 items-center justify-center rounded-2xl">
                             <AccountIcon className="h-4.5 w-4.5" />
                           </div>
                         </div>
@@ -394,18 +387,18 @@ export default function Login() {
             <Card
               eyebrow={needsOnboarding ? 'Profile setup' : 'Demo flow'}
               title={needsOnboarding ? 'Finish setup before entering the workspace' : 'What this preview covers'}
-              className="rounded-[30px]"
+              className="rounded-3xl"
             >
               <div className="space-y-3">
                 {needsOnboarding ? (
                   <>
-                    <div className="theme-surface-soft rounded-[22px] p-4">
+                  <div className="theme-surface-soft rounded-2xl p-4">
                       <p className="text-sm font-semibold text-text-primary">Required next step</p>
                       <p className="mt-1 text-xs text-text-secondary">
                         Add your professional or family profile details so MedFamily can assign the correct care views and permissions.
                       </p>
                     </div>
-                    <div className="theme-surface-soft rounded-[22px] p-4">
+                    <div className="theme-surface-soft rounded-2xl p-4">
                       <p className="text-sm font-semibold text-text-primary">Secure workspace mapping</p>
                       <p className="mt-1 text-xs text-text-secondary">
                         Doctors, hospitals, caretakers, and chemists get different onboarding fields to preserve consent-backed access.
@@ -414,7 +407,7 @@ export default function Login() {
                   </>
                 ) : (
                   <>
-                    <div className="theme-surface-soft rounded-[22px] p-4">
+                    <div className="theme-surface-soft rounded-2xl p-4">
                       <p className="text-sm font-semibold text-text-primary">Email or phone plus password</p>
                       <p className="mt-1 text-xs text-text-secondary">
                         {isDemoAuth
@@ -422,13 +415,13 @@ export default function Login() {
                           : 'Production mode uses Supabase Auth by default. Seeded demo accounts require VITE_AUTH_MODE=demo.'}
                       </p>
                     </div>
-                    <div className="theme-surface-soft rounded-[22px] p-4">
+                    <div className="theme-surface-soft rounded-2xl p-4">
                       <p className="text-sm font-semibold text-text-primary">Role-specific command centers</p>
                       <p className="mt-1 text-xs text-text-secondary">
                         Patient, doctor, hospital, caretaker, and chemist accounts each land in a different dashboard and navigation model.
                       </p>
                     </div>
-                    <div className="theme-surface-soft rounded-[22px] p-4">
+                    <div className="theme-surface-soft rounded-2xl p-4">
                       <p className="text-sm font-semibold text-text-primary">Safe for demos</p>
                       <p className="mt-1 text-xs text-text-secondary">
                         Demo password reset stays local to the optional demo database flow and is separated from production Supabase Auth.
@@ -441,11 +434,11 @@ export default function Login() {
           </div>
         </section>
 
-        <div className="glass w-full rounded-[32px] p-6 shadow-[0_28px_80px_rgba(15,72,99,0.12)] sm:p-8 lg:sticky lg:top-28">
+        <div className="glass w-full rounded-3xl p-6 shadow-[0_18px_48px_rgba(15,72,99,0.10)] sm:p-8 lg:sticky lg:top-28">
           {needsOnboarding ? (
             <form className="space-y-6" onSubmit={(event) => void handleCompleteOnboarding(event)}>
               <div className="flex items-start gap-4">
-                <div className="theme-icon-badge flex h-12 w-12 items-center justify-center rounded-3xl">
+                <div className="theme-icon-badge flex h-12 w-12 items-center justify-center rounded-2xl">
                   <RoleIcon className="h-6 w-6" />
                 </div>
                 <div className="space-y-1">
@@ -582,9 +575,9 @@ export default function Login() {
                     helperText="Choose the role that should shape your dashboard, permissions, and onboarding fields."
                   />
 
-                  <div className="theme-surface-soft rounded-[24px] p-4">
+                    <div className="theme-surface-soft rounded-2xl p-4">
                     <div className="flex items-start gap-3">
-                      <div className="theme-icon-badge flex h-11 w-11 items-center justify-center rounded-[20px]">
+                      <div className="theme-icon-badge flex h-11 w-11 items-center justify-center rounded-2xl">
                         <RoleIcon className="h-5 w-5" />
                       </div>
                       <div className="space-y-1">

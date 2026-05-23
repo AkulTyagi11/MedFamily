@@ -4,9 +4,20 @@ MedFamily uses the numbered files in `supabase/migrations` as the source of trut
 
 ## Project
 
-Create or select a Supabase project named MedFamily. During this pass, the only visible MCP project was `Portfolio`, so migrations were not applied remotely.
+The linked Supabase project is `MedFamily` in `ShreyTriesToCode's Org`:
+
+- Project ref: `rgdmzbxzzwdcesvesdqd`
+- Region: `ap-south-1`
+- URL: `https://rgdmzbxzzwdcesvesdqd.supabase.co`
 
 Recommended region for a new India-focused project: `ap-south-1` when available.
+
+The repository includes `supabase/config.toml` with the project ref. To fully link a local Supabase CLI session, run:
+
+```bash
+npx supabase login
+npx supabase link --project-ref rgdmzbxzzwdcesvesdqd
+```
 
 ## Environment
 
@@ -29,6 +40,7 @@ Apply in order through Supabase migration tooling:
 2. `supabase/migrations/0002_rls_and_storage_policies.sql`
 3. `supabase/migrations/0003_functions_and_triggers.sql`
 4. `supabase/migrations/0004_seed_demo_data.sql`
+5. `supabase/migrations/0006_harden_helper_search_paths.sql`
 
 Do not apply `0005_optional_demo_mode.sql` to production. It exists only for isolated classroom/local demos that intentionally use DB-backed demo auth.
 

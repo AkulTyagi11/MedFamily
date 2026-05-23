@@ -37,7 +37,7 @@ This keeps `/dashboard`, `/records`, `/orders`, and other React Router routes wo
 ## Deployment Steps
 
 1. Create or confirm the MedFamily Supabase project.
-2. Apply migrations `0001` through `0004`.
+2. Apply production migrations `0001`, `0002`, `0003`, `0004`, and `0006`.
 3. Generate/update `src/lib/database.types.ts`.
 4. Import the GitHub repo into Vercel.
 5. Set the Vite build settings above.

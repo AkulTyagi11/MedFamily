@@ -24,6 +24,7 @@ coverage
 .netlify
 .cache
 .vite
+supabase/.temp
 *.local
 
 # Editor directories and files

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">MedFamily app icon</title>
+  <desc id="desc">A green rounded square with a white heart and medical pulse line.</desc>
+  <rect width="512" height="512" rx="112" fill="#2f715f"/>
+  <path d="M256 377c-9 0-17-4-24-10l-81-77c-41-39-47-94-13-130 30-32 78-31 118 3 40-34 88-35 118-3 34 36 28 91-13 130l-81 77c-7 6-15 10-24 10Z" fill="#f7fcf9"/>
+  <path d="M134 258h58l20-43 48 99 30-70h88" fill="none" stroke="#2f715f" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

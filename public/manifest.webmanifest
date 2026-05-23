@@ -1,0 +1,37 @@
+{
+  "name": "MedFamily",
+  "short_name": "MedFamily",
+  "description": "Mobile-first family healthcare workspace for records, reminders, access control, orders, and emergency summaries.",
+  "start_url": "/dashboard",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f7f4",
+  "theme_color": "#2f715f",
+  "categories": ["health", "medical", "productivity"],
+  "icons": [
+    {
+      "src": "/icons/medfamily-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "url": "/dashboard"
+    },
+    {
+      "name": "Emergency summary",
+      "short_name": "Emergency",
+      "url": "/emergency"
+    },
+    {
+      "name": "Medicine reminders",
+      "short_name": "Reminders",
+      "url": "/reminders"
+    }
+  ]
+}

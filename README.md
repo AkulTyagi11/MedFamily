@@ -22,6 +22,12 @@ The legacy `family_member` role remains only for backward compatibility with old
 - Supabase Auth, Postgres, RLS, Storage, Realtime
 - Vitest and React Testing Library
 
+## UI System
+
+The current UI follows the Serene Care Nexus Stitch direction: a minimal family command center in light mode and a dark clinical care workspace in dark mode. Theme tokens live in `src/index.css`, while the authenticated shell is composed from `AppShell`, `SidebarNav`, `TopBar`, and `MobileBottomNav`.
+
+Stitch HTML was used as visual reference only. The React app keeps the existing routes, hooks, Supabase access rules, and form flows as the functional source of truth.
+
 ## Local Setup
 
 ```bash

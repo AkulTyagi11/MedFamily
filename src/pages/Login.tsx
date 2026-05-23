@@ -15,7 +15,6 @@ import Card from '@/components/ui/Card';
 import Input from '@/components/ui/Input';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import Modal from '@/components/ui/Modal';
-import Select from '@/components/ui/Select';
 import { APP_ROLES, AUTH_MODE, AUTH_MODES, MESSAGES, ROUTES } from '@/lib/constants';
 import { isSupabaseConfigured, supabaseConfigError } from '@/lib/supabase';
 import type { AppRole, RoleRegistrationFormInputs } from '@/lib/types';
@@ -306,9 +305,56 @@ export default function Login() {
   };
 
   return (
-    <div className="relative min-h-[100dvh] overflow-hidden bg-background px-4 py-5 sm:px-6 sm:py-8 lg:px-8">
-      <div className="mx-auto grid min-h-[calc(100dvh-3rem)] max-w-6xl gap-5 lg:grid-cols-[1fr_0.92fr] lg:items-center">
-        <section className="space-y-4">
+    <div className="relative min-h-[100dvh] overflow-hidden bg-background px-4 py-5 text-text-primary sm:px-6 sm:py-8 lg:px-8">
+      <div className="mx-auto grid min-h-[calc(100dvh-3rem)] max-w-7xl gap-5 lg:grid-cols-[1fr_0.94fr] lg:items-stretch">
+        <section className="panel relative hidden overflow-hidden rounded-[34px] p-6 lg:flex lg:flex-col lg:justify-between">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(149,212,179,0.18),transparent_30%),radial-gradient(circle_at_80%_80%,rgba(45,106,79,0.2),transparent_34%)]" />
+          <div className="relative z-10 space-y-12">
+            <div className="flex items-center gap-3">
+              <span className="theme-brand-solid flex h-12 w-12 items-center justify-center rounded-2xl">
+                <HeartPulse className="h-6 w-6" />
+              </span>
+              <div>
+                <p className="font-serif text-3xl font-extrabold leading-none text-text-primary">MedFamily</p>
+                <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-text-tertiary">
+                  Care workspace
+                </p>
+              </div>
+            </div>
+
+            <div className="max-w-3xl space-y-5">
+              <p className="theme-chip-strong inline-flex rounded-full px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em]">
+                {isDemoAuth ? 'Demo auth mode' : 'Supabase auth mode'}
+              </p>
+              <h1 className="text-balance font-serif text-[3.4rem] font-extrabold leading-[1.03] text-text-primary">
+                Family healthcare management with calm, role-aware workflows.
+              </h1>
+              <p className="max-w-2xl text-lg text-text-secondary">{heroDescription}</p>
+            </div>
+
+            <div className="grid gap-4 xl:grid-cols-3">
+              {CARE_HIGHLIGHTS.map(({ title, description, icon: Icon }) => (
+                <div key={title} className="theme-surface-soft min-h-[150px] rounded-3xl p-5">
+                  <div className="theme-icon-badge flex h-11 w-11 items-center justify-center rounded-2xl">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <p className="mt-5 text-base font-bold text-text-primary">{title}</p>
+                  <p className="mt-1 text-sm text-text-secondary">{description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative z-10 mt-12 panel-muted rounded-3xl p-5">
+            <p className="text-sm font-semibold text-text-primary">Designed for protected health data workflows</p>
+            <p className="mt-1 text-sm text-text-secondary">
+              Use MedFamily for consent-based access, reminders, and records coordination. Medical information is
+              informational only; consult a qualified professional for care decisions.
+            </p>
+          </div>
+        </section>
+
+        <section className="space-y-4 lg:hidden">
           {!isSupabaseConfigured ? (
             <div className="panel rounded-2xl border-danger-200 bg-danger-50/80 p-4 text-sm text-danger-700">
               <p className="font-semibold">Frontend loaded. Supabase is not connected yet.</p>
@@ -347,45 +393,47 @@ export default function Login() {
           </div>
 
           <div className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
-            <Card eyebrow="Seeded preview" title="Demo accounts by role" className="rounded-3xl">
-              <div className="space-y-3">
-                <p className="text-sm text-text-secondary">
-                  Prefill a role-specific account to review the dashboard, access model, and care workflows without changing auth logic.
-                </p>
-                <div className="grid gap-2 sm:grid-cols-2">
-                  {DEMO_ACCOUNTS.map((account) => {
-                    const AccountIcon = ROLE_CONFIG[account.role].icon;
+            {isDemoAuth ? (
+              <Card eyebrow="Seeded preview" title="Demo accounts by role" className="rounded-3xl">
+                <div className="space-y-3">
+                  <p className="text-sm text-text-secondary">
+                    Prefill a role-specific account to review the dashboard, access model, and care workflows without changing auth logic.
+                  </p>
+                  <div className="grid gap-2 sm:grid-cols-2">
+                    {DEMO_ACCOUNTS.map((account) => {
+                      const AccountIcon = ROLE_CONFIG[account.role].icon;
 
-                    return (
-                      <button
-                        key={account.label}
-                        type="button"
-                        className="theme-surface-soft rounded-2xl p-3 text-left transition hover:border-primary-300 hover:bg-[var(--surface-accent)] focus-visible:outline-none focus-visible:ring-soft"
-                        onClick={() => handleUseDemoAccount(account)}
-                      >
-                        <div className="flex items-start justify-between gap-3">
-                          <div className="space-y-1">
-                            <p className="text-sm font-semibold text-text-primary">{account.label}</p>
-                            <p className="text-xs text-text-secondary">{account.summary}</p>
+                      return (
+                        <button
+                          key={account.label}
+                          type="button"
+                          className="theme-surface-soft rounded-2xl p-3 text-left transition hover:border-primary-300 hover:bg-[var(--surface-accent)] focus-visible:outline-none focus-visible:ring-soft"
+                          onClick={() => handleUseDemoAccount(account)}
+                        >
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="space-y-1">
+                              <p className="text-sm font-semibold text-text-primary">{account.label}</p>
+                              <p className="text-xs text-text-secondary">{account.summary}</p>
+                            </div>
+                            <div className="theme-icon-badge flex h-9 w-9 items-center justify-center rounded-2xl">
+                              <AccountIcon className="h-4.5 w-4.5" />
+                            </div>
                           </div>
-                          <div className="theme-icon-badge flex h-9 w-9 items-center justify-center rounded-2xl">
-                            <AccountIcon className="h-4.5 w-4.5" />
+                          <div className="mt-3 space-y-1 text-xs text-text-secondary">
+                            <p>{account.identifier}</p>
+                            <p>{account.alternateIdentifier}</p>
+                            <p className="font-semibold text-text-primary">Password: {account.password}</p>
                           </div>
-                        </div>
-                        <div className="mt-3 space-y-1 text-xs text-text-secondary">
-                          <p>{account.identifier}</p>
-                          <p>{account.alternateIdentifier}</p>
-                          <p className="font-semibold text-text-primary">Password: {account.password}</p>
-                        </div>
-                      </button>
-                    );
-                  })}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            ) : null}
 
             <Card
-              eyebrow={needsOnboarding ? 'Profile setup' : 'Demo flow'}
+              eyebrow={needsOnboarding ? 'Profile setup' : isDemoAuth ? 'Demo flow' : 'Production auth'}
               title={needsOnboarding ? 'Finish setup before entering the workspace' : 'What this preview covers'}
               className="rounded-3xl"
             >
@@ -434,7 +482,16 @@ export default function Login() {
           </div>
         </section>
 
-        <div className="glass w-full rounded-3xl p-6 shadow-[0_18px_48px_rgba(15,72,99,0.10)] sm:p-8 lg:sticky lg:top-28">
+        <div className="glass w-full self-center rounded-[34px] p-5 shadow-[0_18px_48px_rgba(4,23,16,0.14)] sm:p-7 lg:p-8">
+          {!isSupabaseConfigured ? (
+            <div className="mb-5 rounded-2xl border border-danger-200 bg-danger-50/80 p-4 text-sm text-danger-700">
+              <p className="font-semibold">Frontend loaded. Supabase is not connected yet.</p>
+              <p className="mt-1">
+                {supabaseConfigError} The login and signup screens stay visible so the project does not open as a blank page.
+              </p>
+            </div>
+          ) : null}
+
           {needsOnboarding ? (
             <form className="space-y-6" onSubmit={(event) => void handleCompleteOnboarding(event)}>
               <div className="flex items-start gap-4">
@@ -530,7 +587,7 @@ export default function Login() {
               <div className="space-y-4">
                 <div className="theme-chip-strong inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-semibold">
                   <HeartPulse className="h-4 w-4" />
-                  MedFamily
+                  MedFamily • {isDemoAuth ? 'Demo' : 'Production'}
                 </div>
 
                 <div className="space-y-2">
@@ -561,21 +618,43 @@ export default function Login() {
                 </div>
               </div>
 
-              {mode === 'register' ? (
-                <div className="space-y-3">
-                  <Select
-                    label="Register as"
-                    options={AUTH_ROLES.map((option) => ({ label: option.label, value: option.value }))}
-                    value={selectedRole}
-                    onChange={(event) => {
-                      const nextRole = event.target.value as AppRole;
-                      setSelectedRole(nextRole);
-                      setOnboarding(buildOnboardingDefaults(nextRole));
-                    }}
-                    helperText="Choose the role that should shape your dashboard, permissions, and onboarding fields."
-                  />
+              <div className="space-y-3">
+                <p className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-text-tertiary">
+                  Select your role
+                </p>
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                  {AUTH_ROLES.map((option) => {
+                    const optionRole = option.value;
+                    const OptionIcon = ROLE_CONFIG[optionRole].icon;
+                    const active = selectedRole === optionRole;
 
-                    <div className="theme-surface-soft rounded-2xl p-4">
+                    return (
+                      <button
+                        key={option.value}
+                        type="button"
+                        aria-pressed={active}
+                        className={`min-h-24 rounded-2xl border p-3 text-center transition focus-visible:outline-none focus-visible:ring-soft ${
+                          active
+                            ? 'border-primary-300 theme-active-surface text-primary-700'
+                            : 'theme-surface text-text-secondary hover:text-text-primary'
+                        }`}
+                        onClick={() => {
+                          setSelectedRole(optionRole);
+                          setOnboarding(buildOnboardingDefaults(optionRole));
+                        }}
+                      >
+                        <span className="theme-icon-badge mx-auto flex h-11 w-11 items-center justify-center rounded-2xl">
+                          <OptionIcon className="h-5 w-5" />
+                        </span>
+                        <span className="mt-3 block font-mono text-[11px] font-bold uppercase tracking-[0.16em]">
+                          {option.label}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+                {mode === 'register' ? (
+                  <div className="theme-surface-soft rounded-2xl p-4">
                     <div className="flex items-start gap-3">
                       <div className="theme-icon-badge flex h-11 w-11 items-center justify-center rounded-2xl">
                         <RoleIcon className="h-5 w-5" />
@@ -587,8 +666,8 @@ export default function Login() {
                       </div>
                     </div>
                   </div>
-                </div>
-              ) : null}
+                ) : null}
+              </div>
 
               <div className="space-y-4">
                 {mode === 'register' ? (
@@ -638,6 +717,25 @@ export default function Login() {
                     ? 'Demo sign-in accepts the seeded email or phone number above. Registration creates a preview account and then asks for role details.'
                     : 'Production sign-in uses Supabase Auth. Demo accounts require VITE_AUTH_MODE=demo.'}
                 </p>
+                {mode === 'signin' && isDemoAuth ? (
+                  <div className="theme-surface-soft rounded-2xl p-3">
+                    <p className="mb-2 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-text-tertiary">
+                      Quick fill demo account
+                    </p>
+                    <div className="grid gap-2 sm:grid-cols-2">
+                      {DEMO_ACCOUNTS.slice(0, 4).map((account) => (
+                        <button
+                          key={account.identifier}
+                          type="button"
+                          className="theme-chip rounded-xl px-3 py-2 text-left text-xs font-semibold transition hover:text-primary-700 focus-visible:outline-none focus-visible:ring-soft"
+                          onClick={() => handleUseDemoAccount(account)}
+                        >
+                          {account.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
               </div>
             </form>
           )}

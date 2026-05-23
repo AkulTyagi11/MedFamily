@@ -96,9 +96,9 @@ export default function FileUpload({
           <UploadCloud className="h-6 w-6" />
         </div>
         <p className="mt-4 text-sm font-semibold text-text-primary">Tap to upload or drag files here</p>
-        <p className="mt-1 text-xs text-text-secondary">PDF, JPG, PNG up to {maxSize}MB. Private and securely stored.</p>
+        <p className="mt-1 text-xs text-text-secondary">PDF, JPG, PNG up to {maxSize}MB.</p>
         <p className="mt-3 text-[11px] font-semibold tracking-[0.14em] text-text-tertiary uppercase">
-          Private storage • Preview ready • Choose from device
+          Supabase Storage • Preview ready • Choose from device
         </p>
         <input
           ref={inputRef}

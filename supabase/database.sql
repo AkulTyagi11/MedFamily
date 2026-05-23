@@ -1,0 +1,17 @@
+-- MedFamily Supabase migration index
+-- The source of truth is the ordered files under supabase/migrations/.
+--
+-- Production-safe baseline:
+--   1. supabase/migrations/0001_core_schema.sql
+--   2. supabase/migrations/0002_rls_and_storage_policies.sql
+--   3. supabase/migrations/0003_functions_and_triggers.sql
+--   4. supabase/migrations/0004_seed_demo_data.sql
+--
+-- Local/demo-only add-on:
+--   5. supabase/migrations/0005_optional_demo_mode.sql
+--
+-- Notes:
+-- - Keep production deployments on 0001-0004 unless you explicitly want the
+--   insecure DB-backed demo auth mode.
+-- - 0005 deliberately relaxes production protections for isolated demo use.
+-- - Medical storage buckets remain private in every migration path.
